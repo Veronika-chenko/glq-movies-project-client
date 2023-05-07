@@ -1,27 +1,52 @@
-import { Card, CardContent, CardMedia, Typography } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  MenuItem,
+  Typography,
+  styled,
+} from '@mui/material';
+import { PropTypes } from 'prop-types';
+import { CardMenu } from '../CardMenu';
 
-import { CardMenu } from './components/CardMenu';
+const CardInfo = styled(CardContent)(({ theme }) => ({
+  '&:last-child': {
+    paddingBottom: theme.spacing(2),
+  },
+}));
 
-export const MovieCard = () => {
-  const onSelectClick = (movie) => alert('movie is added');
+export const MovieCard = ({ movie, onCardSelect }) => {
+  // onCardSelect
+  // const onSelectClick = (movie) => alert('movie is added');
 
   return (
     <Card sx={{ maxWidth: 250, position: 'relative' }}>
-      <CardMenu onSelectClick={onSelectClick} />
+      <CardMenu>
+        <MenuItem onClick={onCardSelect}>Select</MenuItem>
+      </CardMenu>
       <CardMedia
         component='img'
         height='250'
-        image='https://www.themoviedb.org/t/p/w220_and_h330_face/9NXAlFEE7WDssbXSMgdacsUD58Y.jpg'
-        alt='Paella dish'
+        image={movie.image}
+        alt={movie.title}
       />
       <CardContent>
         <Typography variant='h5' gutterBottom component='div' fontWeight={500}>
-          Lizard Lizard
+          {movie.title}
         </Typography>
         <Typography variant='subtitle1' gutterBottom component='div'>
-          Apr 20, 2023
+          {movie.releaseDate}
         </Typography>
       </CardContent>
     </Card>
   );
+};
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string,
+  }).isRequired,
+  onSelectClick: PropTypes.func,
 };
