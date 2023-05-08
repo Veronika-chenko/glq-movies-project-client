@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   CardContent,
   CardMedia,
@@ -20,24 +21,38 @@ export const MovieCard = ({ movie, onCardSelect }) => {
   // const onSelectClick = (movie) => alert('movie is added');
 
   return (
-    <Card sx={{ maxWidth: 250, position: 'relative' }}>
+    <Card sx={{ position: 'relative', maxWidth: 250, width: '100%' }}>
       <CardMenu>
         <MenuItem onClick={onCardSelect}>Select</MenuItem>
       </CardMenu>
-      <CardMedia
-        component='img'
-        height='250'
-        image={movie.image}
-        alt={movie.title}
-      />
-      <CardContent>
-        <Typography variant='h5' gutterBottom component='div' fontWeight={500}>
-          {movie.title}
-        </Typography>
-        <Typography variant='subtitle1' gutterBottom component='div'>
-          {movie.releaseDate}
-        </Typography>
-      </CardContent>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <CardMedia
+          component='img'
+          height='250'
+          image={movie.image}
+          alt={movie.title}
+        />
+        <CardInfo
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            flexGrow: 1,
+          }}
+        >
+          <Typography
+            variant='h6'
+            gutterBottom
+            component='div'
+            fontWeight={500}
+          >
+            {movie.title}
+          </Typography>
+          <Typography variant='subtitle1' gutterBottom component='div'>
+            {movie.releaseDate}
+          </Typography>
+        </CardInfo>
+      </Box>
     </Card>
   );
 };
