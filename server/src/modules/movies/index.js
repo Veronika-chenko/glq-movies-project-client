@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { Movies } = require('./entities/Movies');
+
 const { API_KEY } = process.env;
 
 const getPopular = async () => {
