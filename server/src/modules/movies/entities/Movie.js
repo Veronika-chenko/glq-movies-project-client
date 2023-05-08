@@ -21,6 +21,8 @@ class Movie {
   }
 
   releaseDate(params) {
+    if (!this.movie.release_date) return 'Unknown';
+
     return params.format
       ? format(new Date(this.movie.release_date), params.format)
       : this.movie.release_date;

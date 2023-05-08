@@ -3,9 +3,9 @@ const { Movies } = require('./entities/Movies');
 
 const { API_KEY } = process.env;
 
-const getPopular = async () => {
+const getPopular = async (page) => {
   const res = await axios.get(
-    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=${API_KEY}`
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc&api_key=${API_KEY}`
   );
 
   return new Movies(res.data);
