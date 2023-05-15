@@ -17,13 +17,10 @@ const CardInfo = styled(CardContent)(({ theme }) => ({
 }));
 
 export const MovieCard = ({ movie, onCardSelect }) => {
-  // onCardSelect
-  // const onSelectClick = (movie) => alert('movie is added');
-
   return (
     <Card sx={{ position: 'relative', maxWidth: 250, width: '100%' }}>
       <CardMenu>
-        <MenuItem onClick={onCardSelect}>Select</MenuItem>
+        <MenuItem onClick={() => onCardSelect(movie)}>Select</MenuItem>
       </CardMenu>
       <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         <CardMedia
