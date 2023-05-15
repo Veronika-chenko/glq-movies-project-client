@@ -23,6 +23,9 @@ const Home = () => {
     return 'Error in Home fetch';
   }
 
+  const pagesCount =
+    data?.movies?.totalPages <= 500 ? data?.movies?.totalPages : 500;
+
   return (
     <Box sx={{ flexGrow: 1, marginTop: 2 }}>
       <Grid container spacing={2} style={{ border: '1px' }}>
@@ -57,7 +60,7 @@ const Home = () => {
               sx={{ display: 'flex', justifyContent: 'center' }}
             >
               <Pagination
-                count={data?.movies?.totalPages}
+                count={pagesCount}
                 page={page}
                 onChange={handlePagination}
               />

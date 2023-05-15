@@ -1,16 +1,11 @@
-import * as React from 'react';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardMenu } from '../CardMenu';
-import { MenuItem } from '@mui/material';
+import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
+import { SelectMovieButton } from '../SelectMovieButton';
 
 export const MovieCardSelected = ({ movie, onCardDelete }) => {
   return (
-    <Card sx={{ display: 'flex', minHeight: '164px' }}>
+    <Card sx={{ position: 'relative', display: 'flex', minHeight: '164px' }}>
       <CardMedia
         component='img'
         sx={{ width: 100 }}
@@ -55,10 +50,13 @@ export const MovieCardSelected = ({ movie, onCardDelete }) => {
             Length: {movie.runtime}
           </Typography>
         </Box>
-        <CardMenu>
-          <MenuItem onClick={() => onCardDelete(movie)}>Delete</MenuItem>
-        </CardMenu>
       </Box>
+      <SelectMovieButton handleClick={() => onCardDelete(movie)}>
+        <DisabledByDefaultOutlinedIcon sx={{ fontSize: 80 }} />
+        <Typography variant='h6' gutterBottom component='div'>
+          Delete from selected
+        </Typography>
+      </SelectMovieButton>
     </Card>
   );
 };

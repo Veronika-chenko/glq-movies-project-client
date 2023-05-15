@@ -1,6 +1,4 @@
-import { styled } from '@mui/material/styles';
-import { Paper, Stack, Box } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { Paper, Stack, Box, Typography, styled } from '@mui/material';
 import noMoviesImageSrc from '../../images/no_movies.png';
 import { MovieCardSelected } from '../MovieCardSelected';
 import { SelectedMoviesForm } from '../SelectedMoviesForm';
@@ -18,7 +16,7 @@ const SelectedMovies = styled(Paper)(({ theme }) => ({
 }));
 
 const MoviesList = styled(Stack)(({ theme }) => ({
-  overflow: 'scroll',
+  overflowY: 'scroll',
   height: '100%',
 }));
 

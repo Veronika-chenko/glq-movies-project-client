@@ -3,12 +3,12 @@ import {
   Card,
   CardContent,
   CardMedia,
-  MenuItem,
   Typography,
   styled,
 } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import { CardMenu } from '../CardMenu';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import { SelectMovieButton } from '../SelectMovieButton';
 
 const CardInfo = styled(CardContent)(({ theme }) => ({
   '&:last-child': {
@@ -19,16 +19,27 @@ const CardInfo = styled(CardContent)(({ theme }) => ({
 export const MovieCard = ({ movie, onCardSelect }) => {
   return (
     <Card sx={{ position: 'relative', maxWidth: 250, width: '100%' }}>
-      <CardMenu>
-        <MenuItem onClick={() => onCardSelect(movie)}>Select</MenuItem>
-      </CardMenu>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <CardMedia
-          component='img'
-          height='250'
-          image={movie.image}
-          alt={movie.title}
-        />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
+        }}
+      >
+        <Box sx={{ position: 'relative' }}>
+          <CardMedia
+            component='img'
+            height='250'
+            image={movie.image}
+            alt={movie.title}
+          />
+          <SelectMovieButton handleClick={() => onCardSelect(movie)}>
+            <AddBoxOutlinedIcon sx={{ fontSize: 80 }} />
+            <Typography variant='h6' gutterBottom component='div'>
+              Add to selected
+            </Typography>
+          </SelectMovieButton>
+        </Box>
         <CardInfo
           sx={{
             display: 'flex',
