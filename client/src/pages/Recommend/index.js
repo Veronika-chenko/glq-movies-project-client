@@ -1,9 +1,5 @@
 const Recommend = () => {
-    return (
-        <>
-            Recommend
-        </>
-    )
-}
+  return <>Recommend</>;
+};
 
 export default Recommend;
