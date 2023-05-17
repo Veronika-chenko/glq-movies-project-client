@@ -4,7 +4,7 @@ import { Box, Grid, Pagination, Paper } from '@mui/material';
 
 import { MovieCard, SelectedMoviesSection } from '../../components';
 import { MOVIES_QUERY } from './queries';
-import { useMovies } from '../../hooks/useMovie';
+import { useMovies } from '../../hooks/useMovies';
 
 const Home = () => {
   const [page, setPage] = useState(1);

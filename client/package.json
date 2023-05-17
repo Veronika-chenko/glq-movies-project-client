@@ -64,6 +64,7 @@
     "@storybook/react": "^7.0.8",
     "@storybook/react-webpack5": "^7.0.8",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/react-hooks": "^8.0.1",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
     "source-map-loader": "^4.0.1",
