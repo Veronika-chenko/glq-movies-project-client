@@ -4,6 +4,8 @@ import { MovieCardSelected } from './MovieCardSelected';
 import { SelectedMoviesSection } from './SelectedMoviesSection';
 import { SelectedMoviesForm } from './SelectedMoviesForm';
 import { SelectMovieButton } from './SelectMovieButton';
+import { ConfirmModal } from './ConfirmModal';
+import { SocialShare } from './SocialShare';
 
 export {
   Navigation,
@@ -12,4 +14,6 @@ export {
   SelectedMoviesSection,
   SelectedMoviesForm,
   SelectMovieButton,
+  ConfirmModal,
+  SocialShare,
 };
