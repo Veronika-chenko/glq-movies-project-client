@@ -16,7 +16,7 @@ const CardInfo = styled(CardContent)(({ theme }) => ({
   },
 }));
 
-export const MovieCard = ({ movie, onCardSelect }) => {
+export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
   return (
     <Card sx={{ position: 'relative', maxWidth: 250, width: '100%' }}>
       <Box
@@ -33,12 +33,14 @@ export const MovieCard = ({ movie, onCardSelect }) => {
             image={movie.image}
             alt={movie.title}
           />
-          <SelectMovieButton handleClick={() => onCardSelect(movie)}>
-            <AddBoxOutlinedIcon sx={{ fontSize: 80 }} />
-            <Typography variant='h6' gutterBottom component='div'>
-              Add to selected
-            </Typography>
-          </SelectMovieButton>
+          {!isPrewievCard && (
+            <SelectMovieButton handleClick={() => onCardSelect(movie)}>
+              <AddBoxOutlinedIcon sx={{ fontSize: 80 }} />
+              <Typography variant='h6' gutterBottom component='div'>
+                Add to selected
+              </Typography>
+            </SelectMovieButton>
+          )}
         </Box>
         <CardInfo
           sx={{
@@ -72,4 +74,5 @@ MovieCard.propTypes = {
     releaseDate: PropTypes.string,
   }).isRequired,
   onSelectClick: PropTypes.func,
+  isPrewievCard: PropTypes.bool,
 };
