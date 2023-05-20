@@ -1,34 +1,57 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  ApolloLink,
+  from,
+} from '@apollo/client';
 import { Box, Container, CssBaseline } from '@mui/material';
 import { Navigation } from './components';
 import { Home, Recommend, Settings } from './pages';
+import { AppContext } from './context/appContext';
 
 function App() {
+  const { state } = useContext(AppContext);
+  const httpLink = new HttpLink({ uri: 'http://localhost:4000/' });
+
+  const localeMiddleware = new ApolloLink((operation, forward) => {
+    const customHeaders = operation.getContext().hasOwnProperty('headers')
+      ? operation.getContext().headers
+      : {};
+    // console.log('🚀 ~ customHeaders:', customHeaders);
+    operation.setContext({
+      headers: {
+        ...customHeaders,
+        locale: state.locale,
+      },
+    });
+    return forward(operation);
+  });
   const client = new ApolloClient({
-    uri: 'http://localhost:4000/',
+    link: from([localeMiddleware, httpLink]),
     cache: new InMemoryCache(),
     connectToDevTools: true,
   });
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter>
-        <CssBaseline />
-        <Navigation />
-        <Box
-          sx={{
-            backgroundColor: (theme) => theme.palette.grey[100],
-          }}
-        >
-          <Container maxWidth='xl'>
-            <Routes>
-              <Route path='/' element={<Home />}></Route>
-              <Route path='settings' element={<Settings />}></Route>
-              <Route path='recommend' element={<Recommend />}></Route>
-            </Routes>
-          </Container>
-        </Box>
-      </BrowserRouter>
+      <CssBaseline />
+      <Navigation />
+      <Box
+        sx={{
+          backgroundColor: (theme) => theme.palette.grey[100],
+        }}
+      >
+        <Container maxWidth='xl'>
+          <Routes>
+            <Route path='/' element={<Home />}></Route>
+            <Route path='settings' element={<Settings />}></Route>
+            <Route path='recommend' element={<Recommend />}></Route>
+          </Routes>
+        </Container>
+      </Box>
     </ApolloProvider>
   );
 }

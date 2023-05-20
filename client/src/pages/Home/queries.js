@@ -8,7 +8,7 @@ export const MOVIES_QUERY = gql`
       totalPages
       results {
         id
-        title: originalTitle
+        title
         image: posterPath
         releaseDate(format: "dd.MM.yyyy")
         # backdropPath
