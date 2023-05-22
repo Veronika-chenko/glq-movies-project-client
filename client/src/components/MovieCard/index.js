@@ -9,6 +9,7 @@ import {
 import { PropTypes } from 'prop-types';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { SelectMovieButton } from '../SelectMovieButton';
+import { FormattedMessage } from 'react-intl';
 
 const CardInfo = styled(CardContent)(({ theme }) => ({
   '&:last-child': {
@@ -37,7 +38,7 @@ export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
             <SelectMovieButton handleClick={() => onCardSelect(movie)}>
               <AddBoxOutlinedIcon sx={{ fontSize: 80 }} />
               <Typography variant='h6' gutterBottom component='div'>
-                Add to selected
+                <FormattedMessage id='select' />
               </Typography>
             </SelectMovieButton>
           )}

@@ -20,6 +20,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { AppContext } from '../../context/appContext';
 import { LOCALES } from '../../const';
+import translate from '../../utils/translate';
+import { FormattedMessage } from 'react-intl';
 
 export const Navigation = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -41,7 +43,7 @@ export const Navigation = () => {
               <ListItemIcon>
                 <SettingsIcon />
               </ListItemIcon>
-              <ListItemText primary='Settings' />
+              <ListItemText primary={translate('navigation.settings')} />
             </ListItemButton>
           </ListItem>
         </Link>
@@ -53,6 +55,7 @@ export const Navigation = () => {
     <Box>
       <AppBar position='static'>
         <Toolbar>
+          {/* Burger MenuIcon  */}
           <Hidden only={['lg', 'xl']}>
             <IconButton
               onClick={() => setIsDrawerOpen(true)}
@@ -65,17 +68,19 @@ export const Navigation = () => {
               <MenuIcon />
             </IconButton>
           </Hidden>
+          {/*  */}
           <Link to='/' component={RouterLink} sx={{ flexGrow: 1 }}>
             <Typography
               variant='h6'
               component='div'
               sx={{ flexGrow: 1, color: 'white' }}
             >
-              Movies recommendation
+              <FormattedMessage id='navigation.home' />
             </Typography>
           </Link>
           <Box>
             {state.locale}
+            {/*  */}
             <Button
               disabled={state.locale === LOCALES.ENGLISH}
               onClick={() => setLanguage(LOCALES.ENGLISH)}
@@ -91,19 +96,20 @@ export const Navigation = () => {
               UK
             </Button>
           </Box>
-
+          {/* big screen: */}
           <Box sx={{ display: { xs: 'none', lg: 'flex' } }}>
             <Button
               component={RouterLink}
               to='settings'
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
-              Settings
+              <FormattedMessage id='navigation.settings' />
             </Button>
           </Box>
           {/* <Button color='inherit'>Login</Button> */}
         </Toolbar>
       </AppBar>
+      {/* small screen: */}
       <Drawer
         anchor='left'
         open={isDrawerOpen}

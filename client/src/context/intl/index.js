@@ -1,11 +1,17 @@
 import { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
+import flatten from 'flat'; // due to nested translation object fields
 
 import { LOCALES } from '../../const';
+import { translation } from '../../translation';
 
 const Provider = ({ children, locale = LOCALES.ENGLISH }) => (
-  <IntlProvider textComponent={Fragment} locale={locale}>
+  <IntlProvider
+    textComponent={Fragment}
+    locale={locale}
+    messages={flatten(translation[locale])}
+  >
     {children}
   </IntlProvider>
 );

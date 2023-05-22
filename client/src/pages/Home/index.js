@@ -33,7 +33,9 @@ const Home = () => {
           <Paper>Filters section</Paper>
         </Grid>
         <Grid item xs={12} md={8}>
-          <Paper>
+          <Paper
+            style={{ borderBottomRightRadius: 0, borderBottomLeftRadius: 0 }}
+          >
             <Box sx={{ flexGrow: 1, padding: 2 }}>
               {loading && 'Loading...'}
               {data && (

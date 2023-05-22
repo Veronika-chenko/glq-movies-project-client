@@ -16,6 +16,7 @@ import { PropTypes } from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { SocialShare } from '../SocialShare';
 import { CONFRIM_TIMEOUT } from '../../const';
+import { FormattedMessage } from 'react-intl';
 
 const style = {
   position: 'absolute',
@@ -91,7 +92,7 @@ export const ConfirmModal = ({ title, url, open, onClose }) => {
           </CopyToClipboard>
         </Paper>
         <Typography id='modal-modal-title' variant='h6' component='h3' mt={1}>
-          Share with friends
+          <FormattedMessage id='share_with_friends' />
         </Typography>
         <SocialShare url={url} title={title} />
         {openAlert ? (
@@ -112,7 +113,7 @@ export const ConfirmModal = ({ title, url, open, onClose }) => {
               mt: 2,
             }}
           >
-            Copied!
+            <FormattedMessage id='copied' />
           </Alert>
         ) : null}
       </Box>

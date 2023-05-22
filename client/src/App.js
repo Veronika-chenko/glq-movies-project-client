@@ -12,6 +12,7 @@ import { Box, Container, CssBaseline } from '@mui/material';
 import { Navigation } from './components';
 import { Home, Recommend, Settings } from './pages';
 import { AppContext } from './context/appContext';
+import IntlProvider from './context/intl';
 
 function App() {
   const { state } = useContext(AppContext);
@@ -21,7 +22,7 @@ function App() {
     const customHeaders = operation.getContext().hasOwnProperty('headers')
       ? operation.getContext().headers
       : {};
-    // console.log('🚀 ~ customHeaders:', customHeaders);
+
     operation.setContext({
       headers: {
         ...customHeaders,
@@ -30,29 +31,33 @@ function App() {
     });
     return forward(operation);
   });
+
   const client = new ApolloClient({
     link: from([localeMiddleware, httpLink]),
     cache: new InMemoryCache(),
     connectToDevTools: true,
   });
+
   return (
-    <ApolloProvider client={client}>
-      <CssBaseline />
-      <Navigation />
-      <Box
-        sx={{
-          backgroundColor: (theme) => theme.palette.grey[100],
-        }}
-      >
-        <Container maxWidth='xl'>
-          <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='settings' element={<Settings />}></Route>
-            <Route path='recommend' element={<Recommend />}></Route>
-          </Routes>
-        </Container>
-      </Box>
-    </ApolloProvider>
+    <IntlProvider locale={state.locale}>
+      <ApolloProvider client={client}>
+        <CssBaseline />
+        <Navigation />
+        <Box
+          sx={{
+            backgroundColor: (theme) => theme.palette.grey[100],
+          }}
+        >
+          <Container maxWidth='xl'>
+            <Routes>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='settings' element={<Settings />}></Route>
+              <Route path='recommend' element={<Recommend />}></Route>
+            </Routes>
+          </Container>
+        </Box>
+      </ApolloProvider>
+    </IntlProvider>
   );
 }
 

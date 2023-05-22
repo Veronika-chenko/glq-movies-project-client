@@ -6,6 +6,8 @@ import {
   ConfirmModal,
 } from '../../components';
 import { useState } from 'react';
+import translate from '../../utils/translate';
+import { FormattedMessage } from 'react-intl';
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -51,6 +53,7 @@ export const SelectedMoviesSection = ({ selectedMovies, deleteMovie }) => {
   const onCloseConfirmModal = () => {
     setLink('');
   };
+
   if (!selectedMovies.length) {
     return (
       <SelectedMovies>
@@ -65,7 +68,7 @@ export const SelectedMoviesSection = ({ selectedMovies, deleteMovie }) => {
             src={noMoviesImageSrc}
           />
           <Typography variant='h5' mt={2}>
-            No selected movies
+            <FormattedMessage id='no_selected_movies' />
           </Typography>
         </NoMovies>
       </SelectedMovies>

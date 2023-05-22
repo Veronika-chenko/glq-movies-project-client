@@ -2,6 +2,7 @@ import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
 import { SelectMovieButton } from '../SelectMovieButton';
+import { FormattedMessage } from 'react-intl';
 
 export const MovieCardSelected = ({ movie, onCardDelete }) => {
   return (
@@ -54,7 +55,7 @@ export const MovieCardSelected = ({ movie, onCardDelete }) => {
       <SelectMovieButton handleClick={() => onCardDelete(movie)}>
         <DisabledByDefaultOutlinedIcon sx={{ fontSize: 80 }} />
         <Typography variant='h6' gutterBottom component='div'>
-          Delete from selected
+          <FormattedMessage id='delete' />
         </Typography>
       </SelectMovieButton>
     </Card>
