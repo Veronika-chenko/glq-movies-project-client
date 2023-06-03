@@ -12,12 +12,13 @@ import { SORT_DIRECTION } from '../../../../const';
 export const SortDirectionField = () => (
   <Field
     name='sortDirection'
+    type='radio'
     render={({ input }) => (
       <FormattedMessage id='filters.sort_direction'>
         {(placeholder) => (
           <FormControl>
             <FormLabel id='sort_direction'>{placeholder}</FormLabel>
-            <RadioGroup row name='sort_directionp' {...input}>
+            <RadioGroup row name='sort_direction' {...input}>
               <FormControlLabel
                 value={SORT_DIRECTION.ASC}
                 control={<Radio />}

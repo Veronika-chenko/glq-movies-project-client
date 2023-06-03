@@ -15,7 +15,7 @@ export const uk = {
     filters: {
       sort_by: 'Сортувати по',
       sort_direction: 'Напрямок',
-      include_adult: '18+',
+      include_adult: 'Включно 18+',
       year: 'Рік',
       release_year: 'Рік випуску',
       genre: 'Жанр',
