@@ -11,6 +11,7 @@ export const ReleaseYearField = () => (
         label={<FormattedMessage id='filters.release_year'></FormattedMessage>}
         variant='outlined'
         type='number'
+        size='small'
         minvalue={1800}
         maxvalue={2030}
         {...input}

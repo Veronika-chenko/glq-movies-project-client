@@ -1,7 +1,8 @@
-import { Box } from '@mui/material';
+import { Box, Divider, Hidden } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { Form } from 'react-final-form';
 import { PropTypes } from 'prop-types';
+import { styled } from '@mui/system';
 
 import {
   AdultField,
@@ -14,6 +15,16 @@ import {
 } from './components';
 
 import { GENRES_QUERY } from './queries';
+
+const Container = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(3),
+  [theme.breakpoints.up('lg')]: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+}));
 
 export const Filters = ({ onSubmit, initialValues }) => {
   // console.log('🚀 ~ initialValues:', initialValues);
@@ -29,15 +40,16 @@ export const Filters = ({ onSubmit, initialValues }) => {
       initialValues={initialValues}
       render={({ handleSubmit, form, submitting, pristine, values }) => (
         <form onSubmit={handleSubmit}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
+          <Container>
             {/* left filter block */}
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: 1,
+              }}
+            >
               <Box mr={3}>
                 <YearField />
               </Box>
@@ -52,6 +64,9 @@ export const Filters = ({ onSubmit, initialValues }) => {
 
               <AdultField />
             </Box>
+            <Hidden only={['md', 'lg', 'xl']}>
+              <Divider sx={{ height: 1, m: 0.5 }} orientation='horizontal' />
+            </Hidden>
             {/* right filter block  */}
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Box mr={3}>
@@ -60,9 +75,9 @@ export const Filters = ({ onSubmit, initialValues }) => {
 
               <SortDirectionField />
             </Box>
-          </Box>
+          </Container>
           {/* submit button: */}
-          <Box>
+          <Box sx={{ marginTop: '6px' }}>
             <SubmitButton />
           </Box>
         </form>

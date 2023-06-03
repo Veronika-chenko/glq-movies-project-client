@@ -10,8 +10,8 @@ export const GenreField = ({ data }) => {
       render={({ input }) => (
         <FormattedMessage id='filters.genre'>
           {(placeholder) => (
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id='demo-simple-select-label'>
+            <FormControl sx={{ minWidth: 120 }} md={{ m: 1 }}>
+              <InputLabel id='demo-simple-select-label' size='small'>
                 {placeholder}
               </InputLabel>
               <Select
@@ -19,6 +19,7 @@ export const GenreField = ({ data }) => {
                 id='demo-simple-select'
                 autoWidth
                 label={placeholder}
+                size='small'
                 {...input}
               >
                 {data.genres.map(({ name, id }) => (

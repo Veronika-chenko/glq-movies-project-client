@@ -1,9 +1,9 @@
-export { Navigation } from './Navigation';
-export { MovieCard } from './MovieCard';
-export { MovieCardSelected } from './MovieCardSelected';
-export { SelectedMoviesSection } from './SelectedMoviesSection';
-export { SelectedMoviesForm } from './SelectedMoviesForm';
-export { SelectMovieButton } from './SelectMovieButton';
-export { ConfirmModal } from './ConfirmModal';
-export { SocialShare } from './SocialShare';
-export { Filters } from './Filters';
+export * from './Navigation';
+export * from './MovieCard';
+export * from './MovieCardSelected';
+export * from './SelectedMoviesSection';
+export * from './SelectedMoviesForm';
+export * from './SelectMovieButton';
+export * from './ConfirmModal';
+export * from './SocialShare';
+export * from './Filters';
