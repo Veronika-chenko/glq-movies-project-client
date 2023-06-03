@@ -14,7 +14,7 @@ export const uk = {
     delete: 'Видалити',
     filters: {
       sort_by: 'Сортувати по',
-      sort_direction: 'Напрямок',
+      sort_direction: 'Напрямок сортування',
       include_adult: 'Включно 18+',
       year: 'Рік',
       release_year: 'Рік випуску',
@@ -30,8 +30,8 @@ export const uk = {
         vote_count: 'Кількість оцінок',
       },
       sort_direction_options: {
-        asc: 'ASC',
-        desc: 'DESC',
+        asc: 'за зростанням',
+        desc: 'за спаданням',
       },
     },
   },

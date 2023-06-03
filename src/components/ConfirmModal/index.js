@@ -15,7 +15,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { PropTypes } from 'prop-types';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { SocialShare } from '../SocialShare';
-import { CONFRIM_TIMEOUT } from '../../const';
+import { CONFIRM_TIMEOUT } from '../../const';
 import { FormattedMessage } from 'react-intl';
 
 const style = {
@@ -39,7 +39,7 @@ export const ConfirmModal = ({ title, url, open, onClose }) => {
     if (openAlert) {
       timer = setTimeout(() => {
         setOpenAlert(false);
-      }, CONFRIM_TIMEOUT);
+      }, CONFIRM_TIMEOUT);
     }
     return () => clearTimeout(timer);
   }, [openAlert]);

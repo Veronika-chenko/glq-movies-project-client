@@ -43,13 +43,13 @@ export const MovieCardSelected = ({ movie, onCardDelete }) => {
               {movie.genres[0].name}
             </Typography>
           ) : null}
-          <Typography
+          {/* <Typography
             variant='subtitle1'
             color='text.secondary'
             component='div'
           >
             Length: {movie.runtime}
-          </Typography>
+          </Typography> */}
         </Box>
       </Box>
       <SelectMovieButton handleClick={() => onCardDelete(movie)}>
@@ -73,8 +73,6 @@ MovieCardSelected.propTypes = {
         name: PropTypes.string,
       })
     ),
-    runtime: PropTypes.number,
   }).isRequired,
-
-  onCardDelete: PropTypes.func,
+  onCardDelete: PropTypes.func.isRequired,
 };

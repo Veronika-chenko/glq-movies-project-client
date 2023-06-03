@@ -15,6 +15,7 @@ export const MOVIES_QUERY = gql`
     }
   }
 `;
+
 // export const MOVIES_QUERY = gql`
 //   query Movies($page: Int) {
 //     movies(page: $page) {
