@@ -16,7 +16,12 @@ import IntlProvider from './context/intl';
 
 function App() {
   const { state } = useContext(AppContext);
-  const httpLink = new HttpLink({ uri: 'http://localhost:4000/' });
+
+  // const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' });
+
+  const httpLink = new HttpLink({
+    uri: 'https://glq-movies-project-server.onrender.com/graphql',
+  });
 
   const localeMiddleware = new ApolloLink((operation, forward) => {
     const customHeaders = operation.getContext().hasOwnProperty('headers')

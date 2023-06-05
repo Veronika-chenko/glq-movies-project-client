@@ -22,7 +22,7 @@ export const GenreField = ({ data }) => {
                 size='small'
                 {...input}
               >
-                {data.genres.map(({ name, id }) => (
+                {data?.genres.map(({ name, id }) => (
                   <MenuItem key={id} value={id}>
                     {name}
                   </MenuItem>
