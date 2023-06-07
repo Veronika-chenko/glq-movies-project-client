@@ -1,7 +1,6 @@
 {
   "name": "glq-movies-project-client",
   "version": "0.1.0",
-  "homepage": "https://veronika-chenko.github.io/glq-movies-project-client/",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.7.14",
