@@ -34,5 +34,7 @@ export const en = {
         desc: 'DESC',
       },
     },
+    //
+    recommendation_list_name: 'list name',
   },
 };

@@ -1,21 +1,8 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  styled,
-} from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import { SelectMovieButton } from '../SelectMovieButton';
 import { FormattedMessage } from 'react-intl';
-
-const CardInfo = styled(CardContent)(({ theme }) => ({
-  '&:last-child': {
-    paddingBottom: theme.spacing(2),
-  },
-}));
 
 export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
   return (
@@ -43,7 +30,7 @@ export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
             </SelectMovieButton>
           )}
         </Box>
-        <CardInfo
+        <CardContent
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -62,7 +49,7 @@ export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
           <Typography variant='subtitle1' gutterBottom component='div'>
             {movie.releaseDate}
           </Typography>
-        </CardInfo>
+        </CardContent>
       </Box>
     </Card>
   );

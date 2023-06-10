@@ -1,8 +1,7 @@
-import { Box, Divider, Hidden } from '@mui/material';
+import { Box, Divider, Hidden, styled } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { Form } from 'react-final-form';
 import { PropTypes } from 'prop-types';
-import { styled } from '@mui/system';
 
 import {
   AdultField,
@@ -23,6 +22,14 @@ const Container = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('lg')]: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+}));
+
+const SortContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  [theme.breakpoints.up('lg')]: {
+    alignItems: 'flex-start',
   },
 }));
 
@@ -68,13 +75,12 @@ export const Filters = ({ onSubmit, initialValues }) => {
               <Divider sx={{ height: 1, m: 0.5 }} orientation='horizontal' />
             </Hidden>
             {/* right filter block  */}
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <SortContainer>
               <Box mr={3}>
                 <SortField />
               </Box>
-
               <SortDirectionField />
-            </Box>
+            </SortContainer>
           </Container>
           {/* submit button: */}
           <Box sx={{ marginTop: '6px' }}>

@@ -1,20 +1,7 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  styled,
-} from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
 import { SORT_OPTIONS } from '../../../../const';
-
-const FormControlStyled = styled(FormControl)(({ theme }) => ({
-  minWidth: 120,
-  [theme.breakpoints.up('lg')]: {
-    margin: theme.spacing(1),
-  },
-}));
 
 export const SortField = () => (
   <Field
@@ -22,7 +9,7 @@ export const SortField = () => (
     render={({ input }) => (
       <FormattedMessage id='filters.sort_by'>
         {(placeholder) => (
-          <FormControlStyled>
+          <FormControl sx={{ minWidth: '120px' }}>
             <InputLabel id='demo-simple-select-label' size='small'>
               {placeholder}
             </InputLabel>
@@ -36,13 +23,11 @@ export const SortField = () => (
             >
               {SORT_OPTIONS.map(({ label, value }) => (
                 <MenuItem key={value} value={value}>
-                  <FormattedMessage
-                    id={`filters.sort.${label}`}
-                  ></FormattedMessage>
+                  <FormattedMessage id={`filters.sort.${label}`} />
                 </MenuItem>
               ))}
             </Select>
-          </FormControlStyled>
+          </FormControl>
         )}
       </FormattedMessage>
     )}

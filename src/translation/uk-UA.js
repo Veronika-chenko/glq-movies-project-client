@@ -34,5 +34,6 @@ export const uk = {
         desc: 'за спаданням',
       },
     },
+    recommendation_list_name: 'назва списку',
   },
 };

@@ -1,10 +1,23 @@
 import { useQuery } from '@apollo/client';
-import { Box, Grid, Pagination, Paper } from '@mui/material';
+import { Box, Grid, Pagination, Paper, styled } from '@mui/material';
 
 import { Filters, MovieCard, SelectedMoviesSection } from '../../components';
 import { MOVIES_QUERY } from './queries';
-import { useMovies } from '../../hooks/useMovies';
-import { useFilters } from '../../hooks/useFilters';
+import { useFilters, useMovies } from '../../hooks';
+
+const MoviesContainer = styled(Paper)(({ theme }) => ({
+  borderBottomRightRadius: 0,
+  borderBottomLeftRadius: 0,
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '280px',
+  },
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '545px',
+  },
+  [theme.breakpoints.up('md')]: {
+    maxWidth: '100%',
+  },
+}));
 
 const Home = () => {
   const { filter, setPage, setFilter } = useFilters();
@@ -19,7 +32,7 @@ const Home = () => {
   };
 
   if (error) {
-    console.log('Error in Home fetch:', error);
+    console.log('Error on Home fetch:', error);
     // return 'Error in Home fetch';
   }
 
@@ -39,10 +52,11 @@ const Home = () => {
             <Filters onSubmit={onSubmit} initialValue={filter} />
           </Paper>
         </Grid>
-        <Grid item xs={12} md={8}>
-          <Paper
+        <Grid item xs={12} md={8} container justifyContent='center'>
+          {/* <Paper
             style={{ borderBottomRightRadius: 0, borderBottomLeftRadius: 0 }}
-          >
+          > */}
+          <MoviesContainer>
             <Box sx={{ flexGrow: 1, padding: 2 }}>
               {loading && 'Loading...'}
               {data?.movies.results.length === 0 && (
@@ -77,9 +91,9 @@ const Home = () => {
                 onChange={handlePagination}
               />
             </Box>
-          </Paper>
+          </MoviesContainer>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} container justifyContent='center'>
           <SelectedMoviesSection
             selectedMovies={selectedMovies}
             deleteMovie={deleteMovie}

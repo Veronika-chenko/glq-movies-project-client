@@ -15,10 +15,18 @@ const SelectedMovies = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   color: theme.palette.text.secondary,
   height: 'calc(100vh - 140px)',
+  minHeight: '280px',
   position: 'sticky',
   top: theme.spacing(2),
   display: 'flex',
   flexDirection: 'column',
+
+  [theme.breakpoints.up('sm')]: {
+    width: '545px',
+  },
+  [theme.breakpoints.up('md')]: {
+    maxWidth: '100%',
+  },
 }));
 
 const MoviesList = styled(Stack)(({ theme }) => ({
@@ -42,11 +50,10 @@ export const SelectedMoviesSection = ({ selectedMovies, deleteMovie }) => {
     // console.log('🚀 onSubmit ~ e:', e);
     const ids = selectedMovies.map(({ id }) => id);
 
-    const link = `${window.location.host}/recommend?title=${listName}&locale=${
+    const link = `${window.location.href}/recommend?title=${listName}&locale=${
       state.locale
     }&ids=${ids.join()}`;
 
-    // console.log('🚀 ~ link:', link);
     setListName(listName);
     setLink(link);
   };
