@@ -11,7 +11,6 @@ const Home = () => {
   const { loading, error, data } = useQuery(MOVIES_QUERY, {
     variables: { filter },
   });
-  // console.log('🚀 ~ MOVIES_QUERY data:', data);
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
 
   const handlePagination = (e, page) => {
@@ -21,7 +20,7 @@ const Home = () => {
 
   if (error) {
     console.log('Error in Home fetch:', error);
-    return 'Error in Home fetch';
+    // return 'Error in Home fetch';
   }
 
   const pagesCount =
