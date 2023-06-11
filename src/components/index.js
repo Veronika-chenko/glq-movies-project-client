@@ -7,3 +7,4 @@ export * from './SelectMovieButton';
 export * from './ConfirmModal';
 export * from './SocialShare';
 export * from './Filters';
+export * from './Loader';

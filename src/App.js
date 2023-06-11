@@ -9,18 +9,17 @@ import {
   from,
 } from '@apollo/client';
 import { Box, Container, CssBaseline } from '@mui/material';
+
 import { Navigation } from './components';
-import { Home, Recommend, Settings } from './pages';
-import { AppContext } from './context/appContext';
-import IntlProvider from './context/intl';
+import { Home, Recommend } from './pages';
+import { API_URL } from './const';
+import { AppContext, Provider as IntlProvider } from './context';
 
 function App() {
   const { state } = useContext(AppContext);
 
-  // const httpLink = new HttpLink({ uri: 'http://localhost:4000/graphql' });
-
   const httpLink = new HttpLink({
-    uri: 'https://glq-movies-project-server.onrender.com/graphql',
+    uri: API_URL,
   });
 
   const localeMiddleware = new ApolloLink((operation, forward) => {
@@ -56,7 +55,6 @@ function App() {
           <Container maxWidth='xl'>
             <Routes>
               <Route path='/' element={<Home />}></Route>
-              <Route path='settings' element={<Settings />}></Route>
               <Route path='recommend' element={<Recommend />}></Route>
             </Routes>
           </Container>

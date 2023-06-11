@@ -1,3 +1,5 @@
+export const API_URL = 'https://glq-movies-project-server.onrender.com/graphql';
+// 'http://localhost:4000/graphql';
 export const MAX_SELECTED_MOVIES = 20;
 export const SOCIAL_BUTTON_SIZE = 32;
 export const CONFIRM_TIMEOUT = 2000;

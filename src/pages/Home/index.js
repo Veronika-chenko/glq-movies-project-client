@@ -1,25 +1,51 @@
 import { useQuery } from '@apollo/client';
-import { Box, Grid, Pagination, Paper, styled } from '@mui/material';
+import {
+  Box,
+  Grid,
+  Pagination,
+  Paper,
+  Typography,
+  styled,
+} from '@mui/material';
 
-import { Filters, MovieCard, SelectedMoviesSection } from '../../components';
+import {
+  Filters,
+  Loader,
+  MovieCard,
+  SelectedMoviesSection,
+} from '../../components';
 import { MOVIES_QUERY } from './queries';
 import { useFilters, useMovies } from '../../hooks';
+
+const FilterContainer = styled(Paper)(({ theme }) => ({
+  padding: '16px',
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '480px',
+  },
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '768px',
+  },
+  [theme.breakpoints.up('md')]: {
+    maxWidth: '100%',
+    width: '100%',
+  },
+}));
 
 const MoviesContainer = styled(Paper)(({ theme }) => ({
   borderBottomRightRadius: 0,
   borderBottomLeftRadius: 0,
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '280px',
+    maxWidth: '480px',
   },
   [theme.breakpoints.up('sm')]: {
-    maxWidth: '545px',
+    maxWidth: '768px',
   },
   [theme.breakpoints.up('md')]: {
     maxWidth: '100%',
   },
 }));
 
-const Home = () => {
+export const Home = () => {
   const { filter, setPage, setFilter } = useFilters();
   const { loading, error, data } = useQuery(MOVIES_QUERY, {
     variables: { filter },
@@ -31,9 +57,17 @@ const Home = () => {
     setPage(page);
   };
 
+  if (loading) {
+    return <Loader />;
+  }
+
   if (error) {
     console.log('Error on Home fetch:', error);
-    // return 'Error in Home fetch';
+    return (
+      <Typography>
+        Oops, something went wrong. Please, try again later
+      </Typography>
+    );
   }
 
   const pagesCount =
@@ -47,18 +81,14 @@ const Home = () => {
   return (
     <Box sx={{ flexGrow: 1, marginTop: 2 }}>
       <Grid container spacing={2} style={{ border: '1px' }}>
-        <Grid item xs={12}>
-          <Paper sx={{ padding: '16px' }}>
+        <Grid item xs={12} container justifyContent='center'>
+          <FilterContainer>
             <Filters onSubmit={onSubmit} initialValue={filter} />
-          </Paper>
+          </FilterContainer>
         </Grid>
         <Grid item xs={12} md={8} container justifyContent='center'>
-          {/* <Paper
-            style={{ borderBottomRightRadius: 0, borderBottomLeftRadius: 0 }}
-          > */}
           <MoviesContainer>
             <Box sx={{ flexGrow: 1, padding: 2 }}>
-              {loading && 'Loading...'}
               {data?.movies.results.length === 0 && (
                 <p>No movies found matching your filters</p>
               )}
@@ -103,5 +133,3 @@ const Home = () => {
     </Box>
   );
 };
-
-export default Home;

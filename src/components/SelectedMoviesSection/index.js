@@ -21,8 +21,12 @@ const SelectedMovies = styled(Paper)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
 
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '480px',
+  },
   [theme.breakpoints.up('sm')]: {
-    width: '545px',
+    maxWidth: '768px',
+    width: '100%',
   },
   [theme.breakpoints.up('md')]: {
     maxWidth: '100%',

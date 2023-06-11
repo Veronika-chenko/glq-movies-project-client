@@ -3,7 +3,7 @@ import { ApolloError, useQuery } from '@apollo/client';
 import { MOVIES_BY_IDS_QUERY } from './queries';
 import { FormattedMessage } from 'react-intl';
 import { Grid, Box, Typography, Paper, styled } from '@mui/material';
-import { MovieCard } from '../../components';
+import { Loader, MovieCard } from '../../components';
 
 const Container = styled(Paper)(({ theme }) => ({
   padding: '16px',
@@ -16,6 +16,7 @@ const Container = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     maxWidth: '100%',
     width: '100%',
+    padding: '32px',
   },
 }));
 
@@ -25,7 +26,7 @@ const ListName = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const Recommend = () => {
+export const Recommend = () => {
   let [searchParams] = useSearchParams();
 
   const { loading, error, data } = useQuery(MOVIES_BY_IDS_QUERY, {
@@ -38,7 +39,7 @@ const Recommend = () => {
   });
 
   if (loading) {
-    return 'Loading...';
+    return <Loader />;
   }
 
   if (error) {
@@ -68,7 +69,7 @@ const Recommend = () => {
             {searchParams.get('title')}
           </ListName>
           {data?.moviesByIds && (
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
               {data.moviesByIds.map((movie) => (
                 <Grid
                   key={movie.id}
@@ -89,5 +90,3 @@ const Recommend = () => {
     </Box>
   );
 };
-
-export default Recommend;

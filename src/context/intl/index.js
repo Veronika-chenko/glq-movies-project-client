@@ -6,7 +6,7 @@ import flatten from 'flat'; // due to nested translation object fields
 import { LOCALES } from '../../const';
 import { translation } from '../../translation';
 
-const Provider = ({ children, locale = LOCALES.ENGLISH }) => (
+export const Provider = ({ children, locale = LOCALES.ENGLISH }) => (
   <IntlProvider
     textComponent={Fragment}
     locale={locale}
@@ -16,7 +16,7 @@ const Provider = ({ children, locale = LOCALES.ENGLISH }) => (
   </IntlProvider>
 );
 
-Provider.displayName = 'IntlProvider';
+// Provider.displayName = 'IntlProvider';
 
 Provider.propTypes = {
   children: PropTypes.oneOfType([
@@ -29,5 +29,3 @@ Provider.propTypes = {
 Provider.defaultProps = {
   locale: LOCALES.ENGLISH,
 };
-
-export default Provider;

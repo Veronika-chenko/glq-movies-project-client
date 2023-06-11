@@ -1,12 +1,13 @@
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-import { SelectMovieButton } from '../SelectMovieButton';
 import { FormattedMessage } from 'react-intl';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+
+import { SelectMovieButton } from '../SelectMovieButton';
 
 export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
   return (
-    <Card sx={{ position: 'relative', maxWidth: 250, width: '100%' }}>
+    <Card sx={{ position: 'relative', width: '100%' }}>
       <Box
         sx={{
           display: 'flex',
@@ -17,7 +18,7 @@ export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
         <Box sx={{ position: 'relative' }}>
           <CardMedia
             component='img'
-            height='250'
+            height='auto'
             image={movie.image}
             alt={movie.title}
           />
