@@ -1,9 +1,23 @@
 import { useContext, useCallback } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Box, Button, Toolbar, Typography, Link } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  // Button,
+  Toolbar,
+  Typography,
+  Link,
+  TextField,
+  Autocomplete,
+} from '@mui/material';
 import { AppContext } from '../../context/appContext';
-import { LOCALES } from '../../const';
+// import { LOCALES } from '../../const';
 import { FormattedMessage } from 'react-intl';
+
+const languages = {
+  'en-US': 'ENGLISH',
+  'uk-UA': 'UKRAINIAN',
+};
 
 export const Navigation = () => {
   const { state, dispatch } = useContext(AppContext);
@@ -17,6 +31,9 @@ export const Navigation = () => {
     },
     [dispatch]
   );
+  // (() => {
+  //   console.log('Object.keys(languages):', Object.keys(languages));
+  // })();
 
   return (
     <Box>
@@ -31,9 +48,8 @@ export const Navigation = () => {
               <FormattedMessage id='navigation.home' />
             </Typography>
           </Link>
-          <Box>
+          {/* <Box>
             {state.locale}
-            {/*  */}
             <Button
               disabled={state.locale === LOCALES.ENGLISH}
               onClick={() => setLanguage(LOCALES.ENGLISH)}
@@ -48,6 +64,29 @@ export const Navigation = () => {
             >
               UK
             </Button>
+          </Box> */}
+          <Box sx={{ padding: '8px' }}>
+            <Autocomplete
+              options={Object.keys(languages)}
+              getOptionLabel={(key) => `${key}`}
+              style={{
+                padding: '8px',
+              }}
+              value={state.locale}
+              disableClearable
+              onChange={(event, newValue) => {
+                setLanguage(newValue);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  // color='#fff'
+                  label='Locale'
+                  sx={{ width: '100px', borderColor: '#fff', color: '#fff' }}
+                  size='small'
+                />
+              )}
+            />
           </Box>
         </Toolbar>
       </AppBar>

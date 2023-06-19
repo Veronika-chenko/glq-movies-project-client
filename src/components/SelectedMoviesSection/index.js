@@ -15,7 +15,7 @@ const SelectedMovies = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   color: theme.palette.text.secondary,
   height: 'calc(100vh - 140px)',
-  minHeight: '280px',
+  minHeight: '330px',
   position: 'sticky',
   top: theme.spacing(2),
   display: 'flex',

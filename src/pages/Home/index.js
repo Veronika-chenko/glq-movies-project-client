@@ -123,7 +123,7 @@ export const Home = () => {
             </Box>
           </MoviesContainer>
         </Grid>
-        <Grid item xs={12} md={4} container justifyContent='center'>
+        <Grid item xs={12} md={4} container justifyContent='center' pb={2}>
           <SelectedMoviesSection
             selectedMovies={selectedMovies}
             deleteMovie={deleteMovie}
