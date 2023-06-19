@@ -54,9 +54,10 @@ export const SelectedMoviesSection = ({ selectedMovies, deleteMovie }) => {
     // console.log('🚀 onSubmit ~ e:', e);
     const ids = selectedMovies.map(({ id }) => id);
 
-    const link = `${window.location.href}/recommend?title=${listName}&locale=${
-      state.locale
-    }&ids=${ids.join()}`;
+    const link = `${
+      window.location.pathname
+    }/recommend?title=${listName}&locale=${state.locale}&ids=${ids.join()}`;
+    // console.log('window.location.href', window.location.href);
 
     setListName(listName);
     setLink(link);

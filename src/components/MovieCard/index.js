@@ -13,7 +13,7 @@ export const MovieCard = ({
 }) => {
   // console.log('🚀 ~ genreFullList:', genreFullList);
 
-  const replaceGenresIdsWithNames = () => {
+  const getGenreNamesByIds = () => {
     return movie?.genres
       .map((genreId) =>
         genreFullList?.find((genreObj) => genreObj.id === genreId)
@@ -75,7 +75,7 @@ export const MovieCard = ({
                 component='p'
                 color='gray'
               >
-                {replaceGenresIdsWithNames()}
+                {getGenreNamesByIds()}
               </Typography>
             )}
             {!genreFullList && (
