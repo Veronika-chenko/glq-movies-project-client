@@ -7,6 +7,10 @@ export const MOVIES_BY_IDS_QUERY = gql`
       title
       image: posterPath
       releaseDate(format: "dd.MM.yyyy")
+      genres {
+        id
+        name
+      }
     }
   }
 `;

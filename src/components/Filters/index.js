@@ -1,5 +1,4 @@
 import { Box, Divider, Hidden, styled } from '@mui/material';
-import { useQuery } from '@apollo/client';
 import { Form } from 'react-final-form';
 import { PropTypes } from 'prop-types';
 
@@ -12,8 +11,6 @@ import {
   SubmitButton,
   YearField,
 } from './components';
-
-import { GENRES_QUERY } from './queries';
 
 const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -33,14 +30,7 @@ const SortContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const Filters = ({ onSubmit, initialValues }) => {
-  // console.log('🚀 ~ initialValues:', initialValues);
-  const { loading, data } = useQuery(GENRES_QUERY);
-
-  if (loading) {
-    return 'Loading ...';
-  }
-
+export const Filters = ({ onSubmit, initialValues, genres: data }) => {
   return (
     <Form
       onSubmit={onSubmit}

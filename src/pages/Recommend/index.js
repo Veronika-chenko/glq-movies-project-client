@@ -38,6 +38,8 @@ export const Recommend = () => {
     },
   });
 
+  // console.log('🚀 ~ data:', data);
+
   if (loading) {
     return <Loader />;
   }
@@ -80,7 +82,7 @@ export const Recommend = () => {
                   lg={3}
                   style={{ display: 'flex' }}
                 >
-                  <MovieCard movie={movie} isPrewievCard />
+                  <MovieCard movie={movie} isPreviewCard />
                 </Grid>
               ))}
             </Grid>
