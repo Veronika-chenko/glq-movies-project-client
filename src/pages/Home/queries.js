@@ -11,23 +11,17 @@ export const MOVIES_QUERY = gql`
         title
         image: posterPath
         releaseDate(format: "dd.MM.yyyy")
+        genres
       }
     }
   }
 `;
 
-// export const MOVIES_QUERY = gql`
-//   query Movies($page: Int) {
-//     movies(page: $page) {
-//       page
-//       totalResults
-//       totalPages
-//       results {
-//         id
-//         title
-//         image: posterPath
-//         releaseDate(format: "dd.MM.yyyy")
-//       }
-//     }
-//   }
-// `;
+export const GENRES_QUERY = gql`
+  query Genres {
+    genres {
+      id
+      name
+    }
+  }
+`;

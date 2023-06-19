@@ -5,7 +5,32 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
 import { SelectMovieButton } from '../SelectMovieButton';
 
-export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
+export const MovieCard = ({
+  movie,
+  onCardSelect,
+  isPreviewCard,
+  genreFullList,
+}) => {
+  // console.log('🚀 ~ genreFullList:', genreFullList);
+
+  const replaceGenresIdsWithNames = () => {
+    return movie?.genres
+      .map((genreId) =>
+        genreFullList?.find((genreObj) => genreObj.id === genreId)
+      )
+      .filter((genre) => genre)
+      .slice(0, 3)
+      .map((genre) => genre.name)
+      .join(', ');
+  };
+
+  const getGenreName = () => {
+    return movie?.genres
+      .map((genre) => genre.name)
+      .slice(0, 3)
+      .join(', ');
+  };
+
   return (
     <Card sx={{ position: 'relative', width: '100%' }}>
       <Box
@@ -22,7 +47,7 @@ export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
             image={movie.image}
             alt={movie.title}
           />
-          {!isPrewievCard && (
+          {!isPreviewCard && (
             <SelectMovieButton handleClick={() => onCardSelect(movie)}>
               <AddBoxOutlinedIcon sx={{ fontSize: 80 }} />
               <Typography variant='h6' gutterBottom component='div'>
@@ -39,17 +64,35 @@ export const MovieCard = ({ movie, onCardSelect, isPrewievCard }) => {
             flexGrow: 1,
           }}
         >
-          <Typography
-            variant='h6'
-            gutterBottom
-            component='div'
-            fontWeight={500}
-          >
+          <Typography variant='h6' gutterBottom component='p' fontWeight={500}>
             {movie.title}
           </Typography>
-          <Typography variant='subtitle1' gutterBottom component='div'>
-            {movie.releaseDate}
-          </Typography>
+          <Box>
+            {genreFullList && (
+              <Typography
+                variant='string'
+                gutterBottom
+                component='p'
+                color='gray'
+              >
+                {replaceGenresIdsWithNames()}
+              </Typography>
+            )}
+            {!genreFullList && (
+              <Typography
+                variant='string'
+                gutterBottom
+                component='p'
+                color='gray'
+              >
+                {getGenreName()}
+              </Typography>
+            )}
+
+            <Typography variant='string' component='p'>
+              {movie.releaseDate}
+            </Typography>
+          </Box>
         </CardContent>
       </Box>
     </Card>
@@ -63,5 +106,11 @@ MovieCard.propTypes = {
     releaseDate: PropTypes.string,
   }).isRequired,
   onSelectClick: PropTypes.func,
-  isPrewievCard: PropTypes.bool,
+  isPreviewCard: PropTypes.bool,
+  genreFullList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
 };

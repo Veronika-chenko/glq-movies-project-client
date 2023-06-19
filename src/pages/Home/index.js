@@ -14,7 +14,7 @@ import {
   MovieCard,
   SelectedMoviesSection,
 } from '../../components';
-import { MOVIES_QUERY } from './queries';
+import { MOVIES_QUERY, GENRES_QUERY } from './queries';
 import { useFilters, useMovies } from '../../hooks';
 
 const FilterContainer = styled(Paper)(({ theme }) => ({
@@ -47,9 +47,20 @@ const MoviesContainer = styled(Paper)(({ theme }) => ({
 
 export const Home = () => {
   const { filter, setPage, setFilter } = useFilters();
-  const { loading, error, data } = useQuery(MOVIES_QUERY, {
+
+  // retrieve movies:
+  const {
+    loading: moviesQueryLoading,
+    error,
+    data: moviesData,
+  } = useQuery(MOVIES_QUERY, {
     variables: { filter },
   });
+
+  // retrieve genres:
+  const { loading: genresQueryLoading, data: genresData } =
+    useQuery(GENRES_QUERY);
+
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
 
   const handlePagination = (e, page) => {
@@ -57,7 +68,7 @@ export const Home = () => {
     setPage(page);
   };
 
-  if (loading) {
+  if (moviesQueryLoading || genresQueryLoading) {
     return <Loader />;
   }
 
@@ -71,7 +82,9 @@ export const Home = () => {
   }
 
   const pagesCount =
-    data?.movies?.totalPages <= 500 ? data?.movies?.totalPages : 500;
+    moviesData?.movies?.totalPages <= 500
+      ? moviesData?.movies?.totalPages
+      : 500;
 
   const onSubmit = (filterData) => {
     // console.log('🚀 ~ filterData:', filterData);
@@ -83,18 +96,22 @@ export const Home = () => {
       <Grid container spacing={2} style={{ border: '1px' }}>
         <Grid item xs={12} container justifyContent='center'>
           <FilterContainer>
-            <Filters onSubmit={onSubmit} initialValue={filter} />
+            <Filters
+              onSubmit={onSubmit}
+              initialValue={filter}
+              genres={genresData}
+            />
           </FilterContainer>
         </Grid>
         <Grid item xs={12} md={8} container justifyContent='center'>
           <MoviesContainer>
             <Box sx={{ flexGrow: 1, padding: 2 }}>
-              {data?.movies.results.length === 0 && (
+              {moviesData?.movies.results.length === 0 && (
                 <p>No movies found matching your filters</p>
               )}
-              {data && (
+              {moviesData && (
                 <Grid container spacing={2}>
-                  {data.movies.results.map((movie) => (
+                  {moviesData.movies.results.map((movie) => (
                     <Grid
                       key={movie.id}
                       item
@@ -104,7 +121,11 @@ export const Home = () => {
                       lg={3}
                       style={{ display: 'flex' }}
                     >
-                      <MovieCard movie={movie} onCardSelect={selectMovie} />
+                      <MovieCard
+                        movie={movie}
+                        onCardSelect={selectMovie}
+                        genreFullList={genresData.genres}
+                      />
                     </Grid>
                   ))}
                 </Grid>
