@@ -56,8 +56,7 @@ export const SelectedMoviesSection = ({ selectedMovies, deleteMovie }) => {
 
     const link = `${
       window.location.pathname
-    }/recommend?title=${listName}&locale=${state.locale}&ids=${ids.join()}`;
-    // console.log('window.location.href', window.location.href);
+    }recommend?title=${listName}&locale=${state.locale}&ids=${ids.join()}`;
 
     setListName(listName);
     setLink(link);

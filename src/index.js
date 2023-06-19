@@ -10,7 +10,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <BrowserRouter basename='/glq-movies-project-client'>
+    <BrowserRouter basename='/glq-movies-project-client/'>
       <AppContextProvider>
         <App />
       </AppContextProvider>
