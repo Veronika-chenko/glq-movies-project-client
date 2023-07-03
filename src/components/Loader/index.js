@@ -1,17 +1,12 @@
-import { createPortal } from 'react-dom';
 import { Grid } from '@mui/material';
 import { ThreeDots } from 'react-loader-spinner';
 
-const modalRoot = document.querySelector('#modal-root');
-
 export const Loader = () => {
-  return createPortal(
+  return (
     <Grid
-      position='fixed'
+      position='absolute'
       top='0'
       bottom='0'
-      left='0'
-      right='0'
       container
       justifyContent='center'
       alignItems='center'
@@ -26,7 +21,6 @@ export const Loader = () => {
         visible={true}
         ariaLabel='three-dots-loading'
       />
-    </Grid>,
-    modalRoot
+    </Grid>
   );
 };

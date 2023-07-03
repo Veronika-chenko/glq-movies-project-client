@@ -24,6 +24,7 @@ export const useFilters = () => {
       setFilterFields({
         ...filter,
         ...filterFields,
+        page: 1,
         year: +filterFields.year,
         primaryReleaseYear: +filterFields.primaryReleaseYear,
       });

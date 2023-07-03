@@ -32,8 +32,10 @@ const FilterContainer = styled(Paper)(({ theme }) => ({
 }));
 
 const MoviesContainer = styled(Paper)(({ theme }) => ({
+  position: 'relative',
   borderBottomRightRadius: 0,
   borderBottomLeftRadius: 0,
+  width: '100%',
   [theme.breakpoints.down('sm')]: {
     maxWidth: '480px',
   },
@@ -51,29 +53,27 @@ export const Home = () => {
   // retrieve movies:
   const {
     loading: moviesQueryLoading,
-    error,
+    error: moviesError,
     data: moviesData,
   } = useQuery(MOVIES_QUERY, {
     variables: { filter },
   });
 
   // retrieve genres:
-  const { loading: genresQueryLoading, data: genresData } =
-    useQuery(GENRES_QUERY);
+  const { data: genresData, error: genresError } = useQuery(GENRES_QUERY);
 
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
 
   const handlePagination = (e, page) => {
     // console.log('page:', page);
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     setPage(page);
   };
 
-  if (moviesQueryLoading || genresQueryLoading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    console.log('Error on Home fetch:', error);
+  if (moviesError || genresError) {
+    moviesError
+      ? console.log('moviesError on Home fetch:', moviesError)
+      : console.log('genresError on Home fetch:', genresError);
     return (
       <Typography>
         Oops, something went wrong. Please, try again later
@@ -105,11 +105,9 @@ export const Home = () => {
         </Grid>
         <Grid item xs={12} md={8} container justifyContent='center'>
           <MoviesContainer>
-            <Box sx={{ flexGrow: 1, padding: 2 }}>
-              {moviesData?.movies.results.length === 0 && (
-                <p>No movies found matching your filters</p>
-              )}
-              {moviesData && (
+            {moviesQueryLoading ? <Loader /> : null}
+            {moviesData && (
+              <Box sx={{ flexGrow: 1, padding: 2 }}>
                 <Grid container spacing={2}>
                   {moviesData.movies.results.map((movie) => (
                     <Grid
@@ -129,25 +127,29 @@ export const Home = () => {
                     </Grid>
                   ))}
                 </Grid>
-              )}
-            </Box>
-            <Box
-              mt={2}
-              pb={2}
-              sx={{ display: 'flex', justifyContent: 'center' }}
-            >
-              <Pagination
-                count={pagesCount}
-                page={filter.page}
-                onChange={handlePagination}
-              />
-            </Box>
+              </Box>
+            )}
+            {/* using filter */}
+            {!moviesQueryLoading && (
+              <Box
+                mt={2}
+                pb={2}
+                sx={{ display: 'flex', justifyContent: 'center' }}
+              >
+                <Pagination
+                  count={pagesCount}
+                  page={filter.page}
+                  onChange={handlePagination}
+                />
+              </Box>
+            )}
           </MoviesContainer>
         </Grid>
         <Grid item xs={12} md={4} container justifyContent='center' pb={2}>
           <SelectedMoviesSection
             selectedMovies={selectedMovies}
             deleteMovie={deleteMovie}
+            genreFullList={genresData}
           />
         </Grid>
       </Grid>
