@@ -12,6 +12,15 @@ export const uk = {
     copied: 'Скопійовано!',
     select: 'Вибрати',
     delete: 'Видалити',
+    details: 'Детальніше',
+    // movie details modal
+    modal: {
+      popularity: 'Популярність',
+      releaseDate: 'Дата релізу',
+      genres: 'Жанри',
+      overview: 'Опис',
+    },
+    // filters
     filters: {
       sort_by: 'Сортувати по',
       sort_direction: 'Напрямок сортування',

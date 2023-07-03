@@ -12,6 +12,15 @@ export const en = {
     copied: 'Copied!',
     select: 'Select',
     delete: 'Delete',
+    details: 'Details',
+    // movie details modal
+    modal: {
+      popularity: 'Popularity',
+      releaseDate: 'Release date',
+      genres: 'Genres',
+      overview: 'About',
+    },
+    // filters
     filters: {
       sort_by: 'Sort by',
       sort_direction: 'Sort direction',

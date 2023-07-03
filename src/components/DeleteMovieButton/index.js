@@ -20,11 +20,11 @@ const IconWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const SelectMovieButton = ({ handleClick, children }) => {
+export const DeleteMovieButton = ({ handleClick, children }) => {
   return <IconWrapper onClick={handleClick}>{children}</IconWrapper>;
 };
 
-SelectMovieButton.propTypes = {
+DeleteMovieButton.propTypes = {
   handleClick: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
