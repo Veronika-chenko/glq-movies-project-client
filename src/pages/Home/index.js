@@ -95,18 +95,20 @@ export const Home = () => {
     <Box sx={{ flexGrow: 1, marginTop: 2 }}>
       <Grid container spacing={2} style={{ border: '1px' }}>
         <Grid item xs={12} container justifyContent='center'>
-          <FilterContainer>
-            <Filters
-              onSubmit={onSubmit}
-              initialValue={filter}
-              genres={genresData}
-            />
-          </FilterContainer>
+          {genresData && (
+            <FilterContainer>
+              <Filters
+                onSubmit={onSubmit}
+                initialValue={filter}
+                genres={genresData}
+              />
+            </FilterContainer>
+          )}
         </Grid>
         <Grid item xs={12} md={8} container justifyContent='center'>
           <MoviesContainer>
             {moviesQueryLoading ? <Loader /> : null}
-            {moviesData && (
+            {moviesData && genresData && (
               <Box sx={{ flexGrow: 1, padding: 2 }}>
                 <Grid container spacing={2}>
                   {moviesData.movies.results.map((movie) => (

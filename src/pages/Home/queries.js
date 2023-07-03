@@ -10,6 +10,8 @@ export const MOVIES_QUERY = gql`
         id
         title
         image: posterPath
+        overview
+        popularity
         releaseDate(format: "dd.MM.yyyy")
         genres
       }
