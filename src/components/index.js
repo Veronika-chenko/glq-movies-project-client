@@ -1,5 +1,6 @@
 export * from './Navigation';
 export * from './MovieCard';
+export * from './MovieCardPreview';
 export * from './MovieCardSelected';
 export * from './SelectedMoviesSection';
 export * from './SelectedMoviesForm';

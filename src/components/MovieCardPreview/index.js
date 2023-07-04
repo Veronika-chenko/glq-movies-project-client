@@ -1,27 +1,21 @@
 import { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { FormattedMessage } from 'react-intl';
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  MenuItem,
-  Typography,
-} from '@mui/material';
-import { getGenreNamesByIds } from './helpers';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
-import { CardMenu } from '../CardMenu';
-import { MovieDetailsModal } from '../MovieDetailsModal';
+import { getGenreName } from './helpers';
 
-export const MovieCard = ({ movie, onCardSelect, genreFullList }) => {
+import { Trailer } from '../Trailer';
+import { DeleteMovieButton } from '../DeleteMovieButton';
+
+export const MovieCardPreview = ({ movie }) => {
   const [open, setOpen] = useState(false);
 
   const handleModal = () => {
     setOpen(!open);
   };
 
-  const genres = getGenreNamesByIds(genreFullList, movie.genres);
+  const genres = getGenreName(movie.genres);
 
   return (
     <>
@@ -40,14 +34,9 @@ export const MovieCard = ({ movie, onCardSelect, genreFullList }) => {
               image={movie.image}
               alt={movie.title}
             />
-            <CardMenu>
-              <MenuItem onClick={() => onCardSelect(movie)}>
-                <FormattedMessage id='select' />
-              </MenuItem>
-              <MenuItem onClick={handleModal}>
-                <FormattedMessage id='details' />
-              </MenuItem>
-            </CardMenu>
+            <DeleteMovieButton handleClick={handleModal}>
+              <YouTubeIcon sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }} />
+            </DeleteMovieButton>
           </Box>
           <CardContent
             sx={{
@@ -82,31 +71,23 @@ export const MovieCard = ({ movie, onCardSelect, genreFullList }) => {
           </CardContent>
         </Box>
       </Card>
-      <MovieDetailsModal
-        open={open}
-        handleClose={handleModal}
-        movie={movie}
-        genres={genres}
-        onCardSelect={onCardSelect}
-      />
+      {open && (
+        <Trailer movieId={movie.id} open={open} handleClose={handleModal} />
+      )}
     </>
   );
 };
 
-MovieCard.propTypes = {
+MovieCardPreview.propTypes = {
   movie: PropTypes.shape({
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     releaseDate: PropTypes.string,
-    popularity: PropTypes.number.isRequired,
-    overview: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.number),
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ).isRequired,
   }).isRequired,
-  onCardSelect: PropTypes.func.isRequired,
-  genreFullList: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 };
