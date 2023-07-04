@@ -3,7 +3,7 @@ import { ApolloError, useQuery } from '@apollo/client';
 import { MOVIES_BY_IDS_QUERY } from './queries';
 import { FormattedMessage } from 'react-intl';
 import { Grid, Box, Typography, Paper, styled } from '@mui/material';
-import { Loader, MovieCard } from '../../components';
+import { Loader, MovieCardPreview } from '../../components';
 
 const Container = styled(Paper)(({ theme }) => ({
   padding: '16px',
@@ -37,8 +37,6 @@ export const Recommend = () => {
         .map((id) => +id),
     },
   });
-
-  // console.log('🚀 ~ data:', data);
 
   if (loading) {
     return <Loader />;
@@ -82,7 +80,7 @@ export const Recommend = () => {
                   lg={3}
                   style={{ display: 'flex' }}
                 >
-                  <MovieCard movie={movie} isPreviewCard />
+                  <MovieCardPreview movie={movie} />
                 </Grid>
               ))}
             </Grid>

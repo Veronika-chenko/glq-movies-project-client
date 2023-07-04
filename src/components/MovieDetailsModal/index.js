@@ -28,7 +28,6 @@ const ModalBox = styled(Box)(({ theme }) => ({
 
   maxHeight: '80%',
   overflowY: 'auto',
-  bgcolor: 'background.paper',
   borderRadius: 4,
   boxShadow: 24,
   width: '100%',
