@@ -9,3 +9,4 @@ export * from './SocialShare';
 export * from './Filters';
 export * from './Loader';
 export * from './MovieDetailsModal';
+export * from './Trailer';
