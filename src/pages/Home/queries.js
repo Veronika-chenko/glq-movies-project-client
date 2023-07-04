@@ -27,3 +27,12 @@ export const GENRES_QUERY = gql`
     }
   }
 `;
+
+export const TRAILER_QUERY = gql`
+  query Trailer($id: Int!) {
+    trailer(id: $id) {
+      id
+      key
+    }
+  }
+`;

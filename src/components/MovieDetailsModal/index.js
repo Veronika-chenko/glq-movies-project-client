@@ -1,4 +1,8 @@
+import { useState } from 'react';
 import { PropTypes } from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import translate from '../../utils/translate';
+
 import {
   Box,
   styled,
@@ -11,8 +15,10 @@ import {
   IconButton,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { FormattedMessage } from 'react-intl';
-import translate from '../../utils/translate';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+
+import { DeleteMovieButton } from '../DeleteMovieButton';
+import { Trailer } from '../Trailer';
 
 const ModalBox = styled(Box)(({ theme }) => ({
   position: 'absolute',
@@ -61,8 +67,10 @@ const CloseButton = styled(IconButton)(({ theme }) => ({
 }));
 
 const ImageWrap = styled(Box)(({ theme }) => ({
+  position: 'relative',
   flexShrink: 0,
   marginBottom: '16px',
+  height: 'fit-content',
   borderRadius: 4,
   overflow: 'hidden',
   [theme.breakpoints.up('md')]: {
@@ -91,7 +99,12 @@ export const MovieDetailsModal = ({
   genres,
   onCardSelect,
 }) => {
-  const { title, image, releaseDate, popularity, overview } = movie;
+  const { id, title, image, releaseDate, popularity, overview } = movie;
+  const [trailerOpen, setTrailerOpen] = useState(false);
+
+  const handleTrailerModal = () => {
+    setTrailerOpen(!trailerOpen);
+  };
 
   const selectCardAndCloseModal = () => {
     onCardSelect(movie);
@@ -99,74 +112,88 @@ export const MovieDetailsModal = ({
   };
 
   return (
-    <Modal
-      sx={{ margin: '0 16px' }}
-      open={open}
-      onClose={handleClose}
-      aria-labelledby='modal-modal-title'
-      aria-describedby='modal-modal-description'
-    >
-      <ModalBox>
-        <ContentBox>
-          <CloseButton onClick={handleClose}>
-            <CloseIcon color='black' />
-          </CloseButton>
-          <ImageWrap>
-            <CardMedia
-              sx={{ width: '100%' }}
-              component='img'
-              height='auto'
-              image={image}
-              alt={title}
-            />
-          </ImageWrap>
-          <Grid
-            container
-            rowGap={1}
-            direction='column'
-            justifyContent='space-between'
-          >
-            <Box>
-              <Typography
-                variant='h6'
-                component='h2'
-                gutterBottom
-                color='rgba(0, 0, 0, .9)'
-              >
-                {title}
-              </Typography>
-              <TextField
-                title={translate('modal.popularity')}
-                text={popularity}
+    <>
+      <Modal
+        sx={{ margin: '0 16px' }}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
+      >
+        <ModalBox>
+          <ContentBox>
+            <CloseButton onClick={handleClose}>
+              <CloseIcon color='black' />
+            </CloseButton>
+            <ImageWrap>
+              <CardMedia
+                sx={{ width: '100%' }}
+                component='img'
+                height='auto'
+                image={image}
+                alt={title}
               />
-              <TextField
-                title={translate('modal.releaseDate')}
-                text={releaseDate}
-              />
-              <TextField title={translate('modal.genres')} text={genres} />
-              {/*  */}
-              <Typography color='gray' gutterBottom>
-                <FormattedMessage id='modal.overview' />:
-              </Typography>
-              <Typography
-                variant='span'
-                fontWeight={500}
-                color='rgba(0, 0, 0, .9)'
-              >
-                {overview}
-              </Typography>
-            </Box>
-            <Button
-              variant='contained'
-              onClick={selectCardAndCloseModal}
-              sx={{ display: 'block', marginLeft: 'auto' }}
+              <DeleteMovieButton handleClick={handleTrailerModal}>
+                <YouTubeIcon
+                  sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }}
+                />
+              </DeleteMovieButton>
+            </ImageWrap>
+            <Grid
+              container
+              rowGap={1}
+              direction='column'
+              justifyContent='space-between'
             >
-              <FormattedMessage id='select' />
-            </Button>
-          </Grid>
-        </ContentBox>
-      </ModalBox>
-    </Modal>
+              <Box>
+                <Typography
+                  variant='h6'
+                  component='h2'
+                  gutterBottom
+                  color='rgba(0, 0, 0, .9)'
+                >
+                  {title}
+                </Typography>
+                <TextField
+                  title={translate('modal.popularity')}
+                  text={popularity}
+                />
+                <TextField
+                  title={translate('modal.releaseDate')}
+                  text={releaseDate}
+                />
+                <TextField title={translate('modal.genres')} text={genres} />
+                {/*  */}
+                <Typography color='gray' gutterBottom>
+                  <FormattedMessage id='modal.overview' />:
+                </Typography>
+                <Typography
+                  variant='span'
+                  fontWeight={500}
+                  color='rgba(0, 0, 0, .9)'
+                >
+                  {overview}
+                </Typography>
+              </Box>
+              <Button
+                variant='contained'
+                onClick={selectCardAndCloseModal}
+                sx={{ display: 'block', marginLeft: 'auto' }}
+              >
+                <FormattedMessage id='select' />
+              </Button>
+            </Grid>
+          </ContentBox>
+        </ModalBox>
+      </Modal>
+      {trailerOpen && (
+        <Trailer
+          movieId={id}
+          open={trailerOpen}
+          handleClose={handleTrailerModal}
+        />
+      )}
+    </>
   );
 };
 
