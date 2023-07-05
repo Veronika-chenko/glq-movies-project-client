@@ -1,4 +1,4 @@
-# Movie Recommendation React App
+# Movies Recommendation React App
 
 This is a movie recommendation React application that allows users: 
 - to search for movies using different **queries**,
