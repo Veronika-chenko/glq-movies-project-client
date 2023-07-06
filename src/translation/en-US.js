@@ -45,5 +45,10 @@ export const en = {
     },
     //
     recommendation_list_name: 'list name',
+    // NotFound Page:
+    notFound: {
+      errorText: 'Page Not Found',
+      homeLink: 'Go Home',
+    },
   },
 };

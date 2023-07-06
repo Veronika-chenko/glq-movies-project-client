@@ -44,5 +44,10 @@ export const uk = {
       },
     },
     recommendation_list_name: 'назва списку',
+    // NotFound Page:
+    notFound: {
+      errorText: 'Сторінку не знайдено',
+      homeLink: "Перейти на 'Головна'",
+    },
   },
 };

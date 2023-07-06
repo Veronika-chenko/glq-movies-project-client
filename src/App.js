@@ -11,7 +11,7 @@ import {
 import { Box, Container, CssBaseline } from '@mui/material';
 
 import { Navigation } from './components';
-import { Home, Recommend } from './pages';
+import { Home, NotFound, Recommend } from './pages';
 import { API_URL } from './const';
 import { AppContext, Provider as IntlProvider } from './context';
 
@@ -54,8 +54,9 @@ function App() {
         >
           <Container maxWidth='xl'>
             <Routes>
-              <Route path='/' element={<Home />}></Route>
-              <Route path='recommend' element={<Recommend />}></Route>
+              <Route path='/' element={<Home />} />
+              <Route path='recommend' element={<Recommend />} />
+              <Route path='*' element={<NotFound />} />
             </Routes>
           </Container>
         </Box>

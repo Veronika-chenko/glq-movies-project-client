@@ -38,8 +38,8 @@ export const Navigation = () => {
   return (
     <Box>
       <AppBar position='static'>
-        <Toolbar>
-          <Link to='/' component={RouterLink} sx={{ flexGrow: 1 }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Link to='/' component={RouterLink}>
             <Typography
               variant='h6'
               component='div'
@@ -65,7 +65,7 @@ export const Navigation = () => {
               UK
             </Button>
           </Box> */}
-          <Box sx={{ padding: '8px' }}>
+          <Box sx={{ position: 'relative', right: '-16px', padding: '8px' }}>
             <Autocomplete
               options={Object.keys(languages)}
               getOptionLabel={(key) => `${key}`}
