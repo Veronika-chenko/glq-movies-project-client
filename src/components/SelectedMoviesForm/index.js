@@ -2,6 +2,7 @@ import { Divider, IconButton, InputBase, Paper } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import { Form, Field } from 'react-final-form';
 import { FormattedMessage } from 'react-intl';
+import translate from '../../utils/translate';
 
 export const SelectedMoviesForm = ({ onSubmit }) => (
   <Form
@@ -10,7 +11,7 @@ export const SelectedMoviesForm = ({ onSubmit }) => (
       const errors = {};
 
       if (!values.listName) {
-        errors.listName = 'Required';
+        errors.listName = translate('required_field');
       }
 
       return errors;
@@ -24,12 +25,15 @@ export const SelectedMoviesForm = ({ onSubmit }) => (
                 {(placeholder) => (
                   <>
                     <InputBase
+                      autoComplete='off'
                       sx={{ ml: 1, flex: 1 }}
                       placeholder={placeholder.join(' ')}
                       inputProps={{ 'aria-label': 'put list name' }}
                       {...input}
                     />
-                    {meta.touched && meta.error && <span>{meta.error}</span>}
+                    {meta.touched && meta.error && (
+                      <span style={{ color: '#ff0000' }}>{meta.error}</span>
+                    )}
                   </>
                 )}
               </FormattedMessage>

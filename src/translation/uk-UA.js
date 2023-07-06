@@ -6,20 +6,27 @@ export const uk = {
       home: 'Рекомендації фільмів',
       settings: 'Налаштування',
     },
-    no_selected_movies: 'Немає вибраних фільмів',
-    put_the_list_name: 'Вкажіть імʼя списку',
-    share_with_friends: 'Поділитися з друзями',
-    copied: 'Скопійовано!',
     select: 'Вибрати',
     delete: 'Видалити',
     details: 'Детальніше',
+
+    // selected section:
+    no_selected_movies: 'Немає вибраних фільмів',
+    put_the_list_name: 'Вкажіть імʼя списку',
+    required_field: "Обов'язково",
+
+    // confirm modal:
+    share_with_friends: 'Поділитися з друзями',
+    copied: 'Скопійовано!',
+
     // movie details modal
     modal: {
       popularity: 'Популярність',
-      releaseDate: 'Дата релізу',
+      release_date: 'Дата релізу',
       genres: 'Жанри',
       overview: 'Опис',
     },
+
     // filters
     filters: {
       sort_by: 'Сортувати по',
@@ -43,11 +50,14 @@ export const uk = {
         desc: 'за спаданням',
       },
     },
+
+    // Recommend Page:
     recommendation_list_name: 'назва списку',
+
     // NotFound Page:
     notFound: {
-      errorText: 'Сторінку не знайдено',
-      homeLink: "Перейти на 'Головна'",
+      error_text: 'Сторінку не знайдено',
+      home_link: "Перейти на 'Головна'",
     },
   },
 };

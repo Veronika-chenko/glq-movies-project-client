@@ -6,20 +6,27 @@ export const en = {
       home: 'Movies recommendation',
       settings: 'Settings',
     },
-    no_selected_movies: 'No selected movies',
-    put_the_list_name: 'Put the list name',
-    share_with_friends: 'Share with friends',
-    copied: 'Copied!',
     select: 'Select',
     delete: 'Delete',
     details: 'Details',
+
+    // selected section:
+    no_selected_movies: 'No selected movies',
+    put_the_list_name: 'Put the list name',
+    required_field: 'Required',
+
+    // confirm modal:
+    share_with_friends: 'Share with friends',
+    copied: 'Copied!',
+
     // movie details modal
     modal: {
       popularity: 'Popularity',
-      releaseDate: 'Release date',
+      release_date: 'Release date',
       genres: 'Genres',
       overview: 'About',
     },
+
     // filters
     filters: {
       sort_by: 'Sort by',
@@ -43,12 +50,14 @@ export const en = {
         desc: 'DESC',
       },
     },
-    //
+
+    // Recommend Page:
     recommendation_list_name: 'list name',
+
     // NotFound Page:
     notFound: {
-      errorText: 'Page Not Found',
-      homeLink: 'Go Home',
+      error_text: 'Page Not Found',
+      home_link: 'Go Home',
     },
   },
 };

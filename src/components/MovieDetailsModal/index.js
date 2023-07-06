@@ -158,7 +158,7 @@ export const MovieDetailsModal = ({
                   text={popularity}
                 />
                 <TextField
-                  title={translate('modal.releaseDate')}
+                  title={translate('modal.release_date')}
                   text={releaseDate}
                 />
                 <TextField title={translate('modal.genres')} text={genres} />

@@ -25,11 +25,11 @@ export const NotFound = () => {
     >
       <ContentContainer>
         <Typography variant='h6' component='h2'>
-          <FormattedMessage id='notFound.errorText' />
+          <FormattedMessage id='notFound.error_text' />
         </Typography>
         <Link to='/' component={RouterLink}>
           <Typography variant='h6' component='span'>
-            <FormattedMessage id='notFound.homeLink' />
+            <FormattedMessage id='notFound.home_link' />
           </Typography>
         </Link>
       </ContentContainer>
