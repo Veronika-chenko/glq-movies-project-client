@@ -17,5 +17,9 @@ This is a movie recommendation React application that allows users:
 - [Storybook](https://storybook.js.org/): A development environment for UI components that facilitates component isolation, documentation, and testing.
 - Custom Hooks: Custom reusable hooks developed for specific functionalities and logic within the application.
 
+## Demo:
+![movies-recommendation-demo](https://github.com/Veronika-chenko/glq-movies-project-client/assets/99816537/45f77450-7d13-4a9d-964e-901ee7c33c95)
+
 ## Additional link:
 [Express Apollo Server 4](https://github.com/Veronika-chenko/glq-movies-project-server) for this project.
+
