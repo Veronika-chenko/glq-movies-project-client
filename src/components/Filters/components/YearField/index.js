@@ -21,5 +21,3 @@ export const YearField = () => {
     />
   );
 };
-
-// witdth: 182px

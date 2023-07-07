@@ -1,14 +1,28 @@
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  MenuItem,
+  Typography,
+} from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 
 import { SelectMovieButton } from '../SelectMovieButton';
+import { CardMenu } from '../CardMenu';
 
 export const MovieCardSelected = ({ movie, onCardDelete }) => {
   return (
-    <Card sx={{ position: 'relative', display: 'flex', minHeight: '164px' }}>
+    <Card
+      sx={{
+        position: 'relative',
+        display: 'flex',
+        minHeight: '164px',
+      }}
+    >
       <CardMedia
         component='img'
         sx={{ width: 100 }}
@@ -23,7 +37,7 @@ export const MovieCardSelected = ({ movie, onCardDelete }) => {
           position: 'relative',
         }}
       >
-        <CardContent sx={{ flex: '1 0 auto' }}>
+        <CardContent sx={{ flex: '1 0 auto', pr: { xs: '44px', md: '16px' } }}>
           <Typography component='div' variant='h5'>
             {movie.title}
           </Typography>
@@ -47,12 +61,23 @@ export const MovieCardSelected = ({ movie, onCardDelete }) => {
           ) : null}
         </Box>
       </Box>
-      <SelectMovieButton handleClick={() => onCardDelete(movie)}>
-        <DeleteOutlineRoundedIcon sx={{ fontSize: 70 }} />
-        <Typography variant='h6' gutterBottom component='div'>
-          <FormattedMessage id='delete' />
-        </Typography>
-      </SelectMovieButton>
+      {/* delete card for small screen */}
+      <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+        <CardMenu>
+          <MenuItem onClick={() => onCardDelete(movie)}>
+            <FormattedMessage id='delete' />
+          </MenuItem>
+        </CardMenu>
+      </Box>
+      {/* delete card for big screen */}
+      <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+        <SelectMovieButton handleClick={() => onCardDelete(movie)}>
+          <DeleteOutlineRoundedIcon sx={{ fontSize: 70 }} />
+          <Typography variant='h6' gutterBottom component='div'>
+            <FormattedMessage id='delete' />
+          </Typography>
+        </SelectMovieButton>
+      </Box>
     </Card>
   );
 };
