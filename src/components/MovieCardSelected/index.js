@@ -1,8 +1,12 @@
 import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
-import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
-import { DeleteMovieButton } from '../DeleteMovieButton';
 import { FormattedMessage } from 'react-intl';
+
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
+import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
+
+import { SelectMovieButton } from '../SelectMovieButton';
 
 export const MovieCardSelected = ({ movie, onCardDelete }) => {
   return (
@@ -45,12 +49,12 @@ export const MovieCardSelected = ({ movie, onCardDelete }) => {
           ) : null}
         </Box>
       </Box>
-      <DeleteMovieButton handleClick={() => onCardDelete(movie)}>
-        <DisabledByDefaultOutlinedIcon sx={{ fontSize: 80 }} />
+      <SelectMovieButton handleClick={() => onCardDelete(movie)}>
+        <DeleteOutlineRoundedIcon sx={{ fontSize: 70 }} />
         <Typography variant='h6' gutterBottom component='div'>
           <FormattedMessage id='delete' />
         </Typography>
-      </DeleteMovieButton>
+      </SelectMovieButton>
     </Card>
   );
 };

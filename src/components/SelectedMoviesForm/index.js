@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { Divider, IconButton, InputBase, Paper } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import { Form, Field } from 'react-final-form';
@@ -54,3 +55,7 @@ export const SelectedMoviesForm = ({ onSubmit }) => (
     )}
   />
 );
+
+SelectedMoviesForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

@@ -9,6 +9,7 @@ import {
   from,
 } from '@apollo/client';
 import { Box, Container, CssBaseline } from '@mui/material';
+import { HelmetProvider } from 'react-helmet-async';
 
 import { Navigation } from './components';
 import { Home, NotFound, Recommend } from './pages';
@@ -45,21 +46,23 @@ function App() {
   return (
     <IntlProvider locale={state.locale}>
       <ApolloProvider client={client}>
-        <CssBaseline />
-        <Navigation />
-        <Box
-          sx={{
-            backgroundColor: (theme) => theme.palette.grey[100],
-          }}
-        >
-          <Container maxWidth='xl'>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='recommend' element={<Recommend />} />
-              <Route path='*' element={<NotFound />} />
-            </Routes>
-          </Container>
-        </Box>
+        <HelmetProvider>
+          <CssBaseline />
+          <Navigation />
+          <Box
+            sx={{
+              backgroundColor: (theme) => theme.palette.grey[100],
+            }}
+          >
+            <Container maxWidth='xl'>
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='recommend' element={<Recommend />} />
+                <Route path='*' element={<NotFound />} />
+              </Routes>
+            </Container>
+          </Box>
+        </HelmetProvider>
       </ApolloProvider>
     </IntlProvider>
   );

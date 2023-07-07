@@ -17,7 +17,7 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
-import { DeleteMovieButton } from '../DeleteMovieButton';
+import { SelectMovieButton } from '../SelectMovieButton';
 import { Trailer } from '../Trailer';
 
 const ModalBox = styled(Box)(({ theme }) => ({
@@ -26,7 +26,7 @@ const ModalBox = styled(Box)(({ theme }) => ({
   left: '50%',
   transform: 'translate(-50%, -50%)',
 
-  maxHeight: '80%',
+  maxHeight: '90vh',
   overflowY: 'auto',
   borderRadius: 4,
   boxShadow: 24,
@@ -35,6 +35,7 @@ const ModalBox = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.up('md')]: {
     maxWidth: '700px',
+    maxHeight: '80vh',
   },
 }));
 
@@ -132,11 +133,11 @@ export const MovieDetailsModal = ({
                 image={image}
                 alt={title}
               />
-              <DeleteMovieButton handleClick={handleTrailerModal}>
+              <SelectMovieButton handleClick={handleTrailerModal}>
                 <YouTubeIcon
                   sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }}
                 />
-              </DeleteMovieButton>
+              </SelectMovieButton>
             </ImageWrap>
             <Grid
               container

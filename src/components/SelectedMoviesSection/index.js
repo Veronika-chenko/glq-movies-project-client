@@ -10,26 +10,25 @@ import { FormattedMessage } from 'react-intl';
 import { AppContext } from '../../context/appContext';
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
-  backgroundColor: '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: theme.palette.text.secondary,
-  height: 'calc(100vh - 140px)',
-  minHeight: '330px',
   position: 'sticky',
   top: theme.spacing(2),
   display: 'flex',
   flexDirection: 'column',
+  padding: theme.spacing(1),
+
+  width: '100%',
+  height: 'calc(100vh - 140px)',
+  minHeight: '330px',
+
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  color: theme.palette.text.secondary,
 
   [theme.breakpoints.down('sm')]: {
     maxWidth: '480px',
   },
   [theme.breakpoints.up('sm')]: {
     maxWidth: '768px',
-    width: '100%',
-  },
-  [theme.breakpoints.up('md')]: {
-    maxWidth: '100%',
   },
 }));
 

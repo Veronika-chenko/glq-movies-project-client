@@ -51,6 +51,10 @@ export const uk = {
       },
     },
 
+    // errors:
+    invalid_link: 'Посилання невалідне',
+    something_went_wrong: 'Щось пішло не так. Будь ласка, спробуйте пізніше',
+
     // Recommend Page:
     recommendation_list_name: 'назва списку',
 

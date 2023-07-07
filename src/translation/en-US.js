@@ -3,7 +3,7 @@ import { LOCALES } from '../const';
 export const en = {
   [LOCALES.ENGLISH]: {
     navigation: {
-      home: 'Movies recommendation',
+      home: 'Movies Recommendation',
       settings: 'Settings',
     },
     select: 'Select',
@@ -50,6 +50,10 @@ export const en = {
         desc: 'DESC',
       },
     },
+
+    // errors:
+    invalid_link: 'The link provided is invalid',
+    something_went_wrong: 'Oops, something went wrong. Please, try again later',
 
     // Recommend Page:
     recommendation_list_name: 'list name',

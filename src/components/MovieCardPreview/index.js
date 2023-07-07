@@ -6,7 +6,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import { getGenreName } from './helpers';
 
 import { Trailer } from '../Trailer';
-import { DeleteMovieButton } from '../DeleteMovieButton';
+import { SelectMovieButton } from '../SelectMovieButton';
 
 export const MovieCardPreview = ({ movie }) => {
   const [open, setOpen] = useState(false);
@@ -34,9 +34,9 @@ export const MovieCardPreview = ({ movie }) => {
               image={movie.image}
               alt={movie.title}
             />
-            <DeleteMovieButton handleClick={handleModal}>
+            <SelectMovieButton handleClick={handleModal}>
               <YouTubeIcon sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }} />
-            </DeleteMovieButton>
+            </SelectMovieButton>
           </Box>
           <CardContent
             sx={{

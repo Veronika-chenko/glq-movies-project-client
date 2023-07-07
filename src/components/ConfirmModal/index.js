@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { PropTypes } from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   Box,
   Typography,
@@ -12,11 +15,9 @@ import {
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import CloseIcon from '@mui/icons-material/Close';
-import { PropTypes } from 'prop-types';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { SocialShare } from '../SocialShare';
+
 import { CONFIRM_TIMEOUT } from '../../const';
-import { FormattedMessage } from 'react-intl';
+import { SocialShare } from '../SocialShare';
 
 const style = {
   position: 'absolute',
