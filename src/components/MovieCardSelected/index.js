@@ -2,8 +2,6 @@ import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { PropTypes } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import DisabledByDefaultOutlinedIcon from '@mui/icons-material/DisabledByDefaultOutlined';
 import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded';
 
 import { SelectMovieButton } from '../SelectMovieButton';
