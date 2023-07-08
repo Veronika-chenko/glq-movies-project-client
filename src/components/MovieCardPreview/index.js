@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  IconButton,
+  Typography,
+} from '@mui/material';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import { getGenreName } from './helpers';
@@ -34,9 +41,37 @@ export const MovieCardPreview = ({ movie }) => {
               image={movie.image}
               alt={movie.title}
             />
-            <SelectMovieButton handleClick={handleModal}>
-              <YouTubeIcon sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }} />
-            </SelectMovieButton>
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'block' },
+              }}
+            >
+              <SelectMovieButton handleClick={handleModal}>
+                <YouTubeIcon
+                  sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }}
+                />
+              </SelectMovieButton>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: 'block', md: 'none' },
+                position: 'absolute',
+                bottom: -4,
+                right: 0,
+              }}
+            >
+              <IconButton onClick={handleModal}>
+                <YouTubeIcon
+                  sx={{
+                    fontSize: 60,
+                    color: 'rgba(255, 0, 0, .8)',
+                    '&:hover': {
+                      color: 'rgba(255, 0, 0, 1)',
+                    },
+                  }}
+                />
+              </IconButton>
+            </Box>
           </Box>
           <CardContent
             sx={{

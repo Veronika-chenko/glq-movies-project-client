@@ -133,11 +133,39 @@ export const MovieDetailsModal = ({
                 image={image}
                 alt={title}
               />
-              <SelectMovieButton handleClick={handleTrailerModal}>
-                <YouTubeIcon
-                  sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }}
-                />
-              </SelectMovieButton>
+              {/* show trailer button on small screen */}
+              <Box
+                sx={{
+                  display: { xs: 'none', md: 'block' },
+                }}
+              >
+                <SelectMovieButton handleClick={handleTrailerModal}>
+                  <YouTubeIcon
+                    sx={{ fontSize: 80, color: 'rgba(255, 0, 0, 1)' }}
+                  />
+                </SelectMovieButton>
+              </Box>
+              {/* show trailer button on big screen */}
+              <Box
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                  position: 'absolute',
+                  bottom: -4,
+                  right: 0,
+                }}
+              >
+                <IconButton onClick={handleTrailerModal}>
+                  <YouTubeIcon
+                    sx={{
+                      fontSize: 60,
+                      color: 'rgba(255, 0, 0, .8)',
+                      '&:hover': {
+                        color: 'rgba(255, 0, 0, 1)',
+                      },
+                    }}
+                  />
+                </IconButton>
+              </Box>
             </ImageWrap>
             <Grid
               container

@@ -8,7 +8,7 @@ import { ErrorCustom, Loader, MovieCardPreview, SEO } from '../../components';
 const Container = styled(Paper)(({ theme }) => ({
   padding: '16px',
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '280px',
+    maxWidth: '480px',
   },
   [theme.breakpoints.up('sm')]: {
     maxWidth: '545px',
@@ -52,7 +52,7 @@ export const Recommend = () => {
   return (
     <>
       <SEO title='Recommend' />
-      <Box sx={{ flexGrow: 1, paddingTop: 2 }}>
+      <Box sx={{ flexGrow: 1 }} py={2}>
         <Grid item xs={12} container justifyContent='center'>
           <Container>
             <ListName variant='h4' gutterBottom>
