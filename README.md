@@ -1,6 +1,7 @@
 # Movies Recommendation React App
 
-This is a movie recommendation React application that allows users: 
+This is a React application that allows users:
+
 - to search for movies using different **queries**,
 - view **movie details** in a modal window,
 - watch movie **trailers**,
@@ -8,6 +9,7 @@ This is a movie recommendation React application that allows users:
 - and **share** it with friends via various social media platforms.
 
 ## Technologies and libraries:
+
 - [React Hooks](https://react.dev/reference/react): A feature introduced in React 16.8 that allows developers to use state and other React features without writing a class.
 - [Apollo Client](https://www.apollographql.com/docs/react/): A GraphQL client that enables data fetching and state management in the application.
 - [GraphQL](https://graphql.org/): A query language for APIs that provides a flexible and efficient way to request and manipulate data.
@@ -18,8 +20,9 @@ This is a movie recommendation React application that allows users:
 - Custom Hooks: Custom reusable hooks developed for specific functionalities and logic within the application.
 
 ## Demo:
+
 ![movies-recommendation-demo](https://github.com/Veronika-chenko/glq-movies-project-client/assets/99816537/45f77450-7d13-4a9d-964e-901ee7c33c95)
 
 ## Additional link:
-[Express Apollo Server 4](https://github.com/Veronika-chenko/glq-movies-project-server) for this project.
 
+[Express Apollo Server 4](https://github.com/Veronika-chenko/glq-movies-project-server) for this project.
